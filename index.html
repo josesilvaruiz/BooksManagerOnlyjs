@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crazy Books!</title>
+    
+    <!--Styles-->    
+    <link rel="stylesheet" href="Css/index.css"/>
+    <link rel="stylesheet" href="Css/MenuView.css"/>
+    <link rel="stylesheet" href="Css/HeaderView.css"/>
+    <link rel="stylesheet" href="Css/ContentView.css"/>
+    <link rel="stylesheet" href="Css/BooksView.css"/>
+    <link rel="stylesheet" href="Css/UsersView.css"/>
+    <link rel="stylesheet" href="Css/LendsView.css"/>
+    
+    <!--App-->    
+    <script src="Scripts/app.js"></script>
+
+    <!--Models-->
+    <script src="Scripts/Models/Book.js"></script>
+    <script src="Scripts/Models/User.js"></script>
+    <script src="Scripts/Models/Lend.js"></script>
+
+    <!--Handlers-->
+    <script src="Scripts/Handlers/TableHandler.js"></script>
+    <script src="Scripts/Handlers/InputDataHandler.js"></script>
+    <script src="Scripts/Handlers/DropDownHandler.js"></script>
+    
+    <!--Views-->
+    <script src="Scripts/Views/MenuViewModel.js"></script>
+    <script src="Scripts/Views/UsersViewModel.js"></script>
+    <script src="Scripts/Views/BooksViewModel.js"></script>
+    <script src="Scripts/Views/LendsViewModel.js"></script>   
+
+</head>
+<body>
+    <div id="IndexView">
+
+        <div class="MenuView">
+            <table class="MenuTable">
+                <tr>
+                    <td>
+                        <button type="button" class="pure-material-button-contained" onclick="App.ShowView(MenusViews.Books)">Books</button><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="pure-material-button-contained" onclick="App.ShowView(MenusViews.Users)">Users</button><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" class="pure-material-button-contained" onclick="App.ShowView(MenusViews.Lends)">Lends</button><br>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="HeaderView">
+            <h1>Books  Manager!</h1>
+        </div>
+        <div class="ContentView">
+            <div id="BooksView">
+                <div>
+                    <h2>Add new book</h1>
+                </div>
+                <table>
+                    <tr>
+                        <td>Title:</td>
+                        <td><input type="text" property="Title" value="Sauron"></td>
+                    </tr>
+                    <tr>
+                        <td>Author:</td>
+                        <td><input type="text" property="Author" value="Annatar"></td>                        
+                    </tr>            
+                    <tr>
+                        <td>Year:</td>
+                        <td><input type="number" property="Year" value="0"></td>                        
+                    </tr>            
+                    <tr>
+                        <td>Amount:</td>
+                        <td><input type="number" property="Amount" value="0"></td>                        
+                    </tr> 
+                </table>
+                <div>
+                    <button id="BtAddBook" onclick="App.BooksVM.AddNewBook()">Add Book</button>
+                    <button id="BtUpdateBook" class="BtInvisible" onclick="App.BooksVM.UpdateBook()">Update Client</button>                    
+                    <button id="BtCleanBook" onclick="App.BooksVM.CleanBookForm()">Clean</button>
+                </div>
+
+                <div id="BooksTableContent">
+
+                </div>
+            </div>
+            <div id="UsersView">
+
+                <div>
+                    <h2>Add new User</h1>
+                </div>
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" property="Name"></td>
+                    </tr>
+                    <tr>
+                        <td>Surname:</td>
+                        <td><input type="text" property="Surname"></td>                        
+                    </tr>      
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="email" property="Email"></td>                        
+                    </tr>             
+                    <tr>
+                        <td>Birth Date:</td>
+                        <td><input type="date" property="BirthDate"></td>                        
+                    </tr>  
+                </table>
+                <div>
+                    <button id="BtAddUser" onclick="App.UsersVM.AddNewUser()">Add User</button>
+                    <button id="BtUpdateUser" class="BtInvisible" onclick="App.UsersVM.UpdateUser()">Update Client</button>                    
+                    <button id="BtCleanUser" onclick="App.UsersVM.CleanUserForm()">Clean</button>
+                </div>
+
+                <div id="UsersTableContent">
+
+                </div>
+            </div>
+            <div id="LendsView">
+                <div>
+                    <h2>Handle lends</h1>
+                </div>
+                <table>
+                    <tr>
+                        <td>Select User:</td>
+                        <td>
+                            <div class="dropdown">
+                                <button id="LendsVM_BtSelectedUser" onclick="App.LendsVM.ShowUsers()" class="dropbtn">Select User</button>
+                                <div id="DDUsers" class="dropdown-content">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Select Book:</td>
+                        <td>
+                            <div class="dropdown">
+                                <button id="LendsVM_BtSelectedBook" onclick="App.LendsVM.ShowBooks()" class="dropbtn">Select Book</button>
+                                <div id="DDBooks" class="dropdown-content">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button id="BtLendBook" onclick="App.LendsVM.AddLend()" style="display:none">Lend Book</button>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    
+                </div>
+
+                <div id="LendsTableContent">
+
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
